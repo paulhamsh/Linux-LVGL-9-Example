@@ -1,5 +1,6 @@
 #include "lvgl/lvgl.h"
-#include <time.h>
+#include <unistd.h>
+
 
 
 static lv_obj_t *label1;
