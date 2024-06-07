@@ -68,6 +68,34 @@ Ensure ```lv_conf.h``` has this line:
 #define LV_USE_EVDEV 1
 ```
 
+
+New ```CMakeLists.txt  ```
+
+```
+cmake_minimum_required(VERSION 3.10)
+project(lvgl)
+
+set(CMAKE_C_STANDARD 99)#C99 # lvgl officially support C99 and above
+set(CMAKE_CXX_STANDARD 17)#C17
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+
+add_subdirectory(lvgl)
+target_include_directories(lvgl PUBLIC ${PROJECT_SOURCE_DIR})
+
+add_executable(main
+               main.c
+              )
+
+
+target_link_libraries(main
+                      lvgl
+                      lvgl::thorvg
+                      )
+add_custom_target (run COMMAND ${EXECUTABLE_OUTPUT_PATH}/main DEPENDS main)
+
+```
 Copy ```main.c``` and re-do the ```make -j```
 
 
