@@ -1,5 +1,7 @@
 # Linux-LVGL-9-Example
-Linux LVGL 9 Example
+Linux LVGL 9 Example.   
+Build on a Raspberry Pi 400 for a Pi Zero W with Waveshare Zero-DISP-7A screen.    
+Using fb0 and evdev as standard.   
 
 ## Build instructions for lv_port_linux_frame_buffer
 
@@ -59,6 +61,12 @@ make -j
 The resulting bin/main will run.
 
 ## Build instructions my code
+
+Ensure ```lv_conf.h``` has this line:
+  
+```
+#define LV_USE_EVDEV 1
+```
 
 Copy ```main.c``` and re-do the ```make -j```
 
